@@ -21,6 +21,7 @@ const logo = require('../../assets/img/logo2.png');
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
+    marginBottom: '20px'
   },
   menuButton: {
     marginRight: theme.spacing(2),

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/styles';
+import {Link} from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -31,6 +32,10 @@ const useStyles = makeStyles(theme => ({
   uploadButton: {
     marginRight: 20,
   },
+  link: {
+    textDecoration: 'none',
+    color: 'inherit'
+  }
 }));
 
 const AccountProfile = props => {
@@ -68,12 +73,14 @@ const AccountProfile = props => {
       </CardContent>
       <Divider />
       <CardActions>
+      <Link to='/editProfile' className={classes.link}>
         <Button
           className={classes.uploadButton}
           color="primary"
           variant="text"
         >Edit profile
         </Button>
+      </Link>
       </CardActions>
     </Card>
   );

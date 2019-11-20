@@ -2,19 +2,23 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import {
   Card,
   CardHeader,
   CardContent,
   CardActions,
   Divider,
-  Grid,
   Button,
   TextField
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {
+    marginTop: '20px'
+  }
 }));
 
 const AccountDetails = props => {
@@ -33,6 +37,11 @@ const AccountDetails = props => {
 
 
   return (
+    <Container component="main" maxWidth="xl">
+            <CssBaseline />
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <Grid container justify="center" spacing={2}>
     <Card
       className={clsx(classes.root, className)}
     >
@@ -123,6 +132,10 @@ const AccountDetails = props => {
         </CardActions>
       </form>
     </Card>
+    </Grid>
+    </Grid>
+    </Grid>
+    </Container>
   );
 };
 

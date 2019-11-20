@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('./database');
+require('./passport/localAuth');
 const app = require('./app');
 
 async function main() {

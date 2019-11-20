@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import AppBar from '../../components/appBar';
 import Page from './edit';
 
 class AccountEdit extends Component {
     render() {
         return(
-            <Page/>
+            <React.Fragment>
+                <AppBar/>
+                <Page/>
+            </React.Fragment>
         );
     }
 }

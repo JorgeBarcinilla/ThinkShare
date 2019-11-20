@@ -5,10 +5,9 @@ import Index from './views/index';
 import SignIn from './views/signIn';
 import SignUp from './views/signUp';
 import Home from './views/home';
-import Profile from './views/profile';
 import CreateThink from './views/createThink';
 import Notification from './views/notification';
-import Acc from './views/account';
+import Acc from './views/ProfilePage/ProfilePage.js';
 import AccEdit from './views/accountEdit';
 
 function App() {
@@ -18,11 +17,10 @@ function App() {
       <Route path="/signIn" exact component={SignIn}/>
       <Route path="/signUp" exact component={SignUp}/>
       <Route path="/home" exact component={Home}/>
-      <Route path="/profile" exact component={Profile}/>
       <Route path="/createThink" exact component={CreateThink}/>
       <Route path="/notification" exact component={Notification}/>
-      <Route path="/acc" exact component={Acc}/>
-      <Route path="/accEdit" exact component={AccEdit}/>
+      <Route path="/profile" exact component={Acc}/>
+      <Route path="/editProfile" exact component={AccEdit}/>
     </Router>
   );
 }
