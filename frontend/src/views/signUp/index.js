@@ -1,52 +1,50 @@
 import React, { Component } from 'react';
 import Page from './page';
-import request from 'superagent';
+import  {reduxForm} from 'redux-form';
+import { connect } from "react-redux";
+import { compose } from "redux";
+import * as actions from '../../actions';
+//import request from 'superagent';
 
 class SignUp extends Component {
 
-    handleSubmit(e){
-        e.preventDefault();
-        var fields = e.target.getElementsByTagName('input');
+    constructor(props){
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
         
-        var data = {};
-        for (let index = 0; index < fields.length; index++) { 
-            const field = fields[index];
-            data[field.name] = field.value;
-        }
-        //console.log(data);
+    }
 
-        request
-            .post('http://localhost:4000/api/user/createUser')
-            .set('Content-Type', 'application/json')
-            .send(data)
-            .end(function(err, res){
-                if (err) throw err
-                const status = JSON.parse(res.text);
-                if(status.status == 'failed'){
-                    alert(status.message);
-                    for (let index = 0; index < fields.length; index++) { 
-                        const field = fields[index];
-                        if(field.name == 'email'){
-                            field.focus();
-                            break;
-                        }
-                    }
-                    
-                }else{
-                    alert(status.message);
-                }
-            });
+    async onSubmit(formData){
+        console.log(formData);
+
+        await this.props.signUp(formData);
+
+        if(!this.props.errorMessage){
+            this.props.history.push('/profile');
+        }
+        
     }
 
     render() {
+        const{ handleSubmit } = this.props;
         return(
             <React.Fragment> 
                 <Page
-                    submit={this.handleSubmit}
+                    onSubmit = {handleSubmit(this.onSubmit)}
+                    errorMessage = {this.props.errorMessage}
                 />
             </React.Fragment> 
         ); 
     }
 }
 
-export default SignUp;
+function mapStateToProps(state) {
+    return{
+      errorMessage: state.auth.errorMessage
+    }  
+}
+
+export default compose(
+    connect(mapStateToProps, actions),
+    reduxForm({form: 'signup'})
+)(SignUp);

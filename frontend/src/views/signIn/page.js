@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Input from '../../components/input';
+import  {Field} from 'redux-form';
 
 const logo = require('../../assets/img/logo.png');
 
@@ -42,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignIn({submit}) {
+export default function SignIn({onSubmit, errorMessage}) {
   const classes = useStyles();
 
   return (
@@ -57,33 +59,38 @@ export default function SignIn({submit}) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate method="post" onSubmit={submit}>
-          <TextField
+        <form className={classes.form} noValidate method="post" onSubmit={onSubmit}>
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Field
+            type="text"
             variant="outlined"
-            margin="normal"
-            required
-            fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
+            autofocus
+            component={Input}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
+          </Grid>
+          <Grid item xs={12}>
+          <Field
             type="password"
+            variant="outlined"
             id="password"
+            label="password"
+            name="password"
             autoComplete="current-password"
+            autofocus
+            component={Input}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          </Grid>
+          {errorMessage ? 
+              <Grid item xs={12}>
+                {errorMessage}
+              </Grid> : null
+            }
+          </Grid>
           <Button
             type="submit"
             fullWidth

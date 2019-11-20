@@ -20,6 +20,7 @@ userCtrl.getUsers = async (req, res) => {
 
 userCtrl.profile = async (req, res) => {
     console.log('Estoy en el perfil');
+    res.json({name:'profile'});
 }
 
 userCtrl.signIn = async (req, res) => {

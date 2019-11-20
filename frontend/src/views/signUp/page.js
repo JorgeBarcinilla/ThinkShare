@@ -1,14 +1,13 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import  {Field} from 'redux-form';
+import Input from '../../components/input';
 
 const logo = require('../../assets/img/logo.png');
 
@@ -41,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignUp({submit}) {
+export default function SignUp({onSubmit, errorMessage}) {
   const classes = useStyles();
 
   return (
@@ -56,60 +55,58 @@ export default function SignUp({submit}) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate method="post" onSubmit={submit}>
+        <form className={classes.form} noValidate method="post" onSubmit={onSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
+                <Field
+                  name="firstName"
+                  type="text"
+                  id="firstName"
+                  label="First Name"
+                  variant="outlined"
+                  autoComplete="fname"
+                  autofocus
+                  component={Input}
+                />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <Field
                 variant="outlined"
-                required
-                fullWidth
+                type="text"
                 id="lastName"
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                component={Input}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <Field
                 variant="outlined"
-                required
-                fullWidth
+                type="text"
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                component={Input}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <Field
                 variant="outlined"
-                required
-                fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                component={Input}
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            {errorMessage ? 
+              <Grid item xs={12}>
+                {errorMessage}
+              </Grid> : null
+            }
           </Grid>
           <Button
             type="submit"
@@ -132,3 +129,5 @@ export default function SignUp({submit}) {
     </Container>
   );
 }
+
+

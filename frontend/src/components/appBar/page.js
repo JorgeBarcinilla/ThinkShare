@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({handleClick}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -133,7 +133,11 @@ export default function PrimarySearchAppBar() {
           Profile
         </Link>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log out</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link to='/' className={classes.link} onClick={handleClick}>
+          Log out
+        </Link>
+      </MenuItem>
     </Menu>
   );
 
@@ -191,7 +195,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div className={classes.grow} fixed>
+    <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
          

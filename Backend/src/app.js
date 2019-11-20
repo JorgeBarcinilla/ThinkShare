@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
-const flash = require('connect-flash');
 
 // Setting
 app.set('port', process.env.PORT || 4000);
@@ -19,7 +18,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -1,46 +1,47 @@
 import React, { Component } from 'react';
 import Page from './page';
-import request from 'superagent';
+import  {reduxForm} from 'redux-form';
+import { connect } from "react-redux";
+import { compose } from "redux";
+import * as actions from '../../actions';
 
 class SignIn extends Component {
 
-    handleSubmit(e){
-        e.preventDefault();
-        var fields = e.target.getElementsByTagName('input');
-        
-        var data = {};
-        for (let index = 0; index < fields.length; index++) { 
-            const field = fields[index];
-            data[field.name] = field.value;
-        }
-        //console.log(data);
-
-        request
-            .post('http://localhost:4000/api/user/loginUser')
-            .set('Content-Type', 'application/json')
-            .send(data)
-            .end(function(err, res){
-                if (err) {
-                    alert(err);
-                }else{
-                    const status = JSON.parse(res.text);
-                    window.location.href = '/profile';
-                    console.log(status);
-                }
-                
-            });
+    constructor(props){
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
+    async onSubmit(formData){
+        console.log(formData);
+
+        //we need to call some actions
+        await this.props.signIn(formData);
+        if(!this.props.errorMessage){
+            this.props.history.push('/profile');
+        }
+    }
 
     render() {
+        const{ handleSubmit } = this.props;
         return(
             <React.Fragment> 
                 <Page
-                    submit={this.handleSubmit}
+                    onSubmit = {handleSubmit(this.onSubmit)}
+                    errorMessage = {this.props.errorMessage}
                 />
             </React.Fragment> 
         ); 
     }
 }
 
-export default SignIn;
+function mapStateToProps(state) {
+    return{
+      errorMessage: state.auth.errorMessage
+    }  
+}
+
+export default compose(
+    connect(mapStateToProps, actions),
+    reduxForm({form: 'signin'})
+)(SignIn);

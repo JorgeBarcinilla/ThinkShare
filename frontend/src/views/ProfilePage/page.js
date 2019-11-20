@@ -39,9 +39,8 @@ const work5 = require("../../assets/img/examples/clem-onojegaw.jpg");
 
 const useStyles = makeStyles(styles);
 
-export default function ProfilePage(props) {
+export default function ProfilePage({test}) {
   const classes = useStyles();
-  const { ...rest } = props;
   const imageClasses = classNames(
     classes.imgRaised,
     classes.imgRoundedCircle,
@@ -64,7 +63,7 @@ export default function ProfilePage(props) {
                     <img src={profile} alt="..." className={imageClasses} />
                   </div>
                   <div className={classes.name}>
-                    <h3 className={classes.title}>Christian Louboutin</h3>
+                    <h3 className={classes.title}>Christian Louboutin {test}</h3>
                     <h6>DESIGNER</h6>
                     <Button justIcon link className={classes.margin5}>
                       <i className={"fab fa-twitter"} />
