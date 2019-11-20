@@ -7,13 +7,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
 import Favorite from "@material-ui/icons/Favorite";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 // core components
-import Header from "../../components/Header/Header.js";
+//import Header from "../../components/Header/Header.js";
 import Footer from "../../components/footer/Footer.js";
 import Button from "../../components/CustomButtons/Button.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
-import HeaderLinks from "../../components/Header/HeaderLinks.js";
+//import HeaderLinks from "../../components/Header/HeaderLinks.js";
 import NavPills from "../../components/NavPills/NavPills.js"; 
 import Parallax from "../../components/Parallax/Parallax.js";
 
@@ -46,18 +49,10 @@ export default function ProfilePage(props) {
   );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
-    <div>
-      <Header
-        color="transparent"
-        brand="Material Kit React"
-        rightLinks={<HeaderLinks />}
-        fixed
-        changeColorOnScroll={{
-          height: 200,
-          color: "white"
-        }}
-        {...rest}
-      />
+    <Container component="main" maxWidth="xl">
+      <CssBaseline />
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
       <Parallax small filter image={require("../../assets/img/profile-bg.jpg")} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div>
@@ -212,6 +207,8 @@ export default function ProfilePage(props) {
         </div>
       </div>
       <Footer />
-    </div>
+      </Grid>
+      </Grid>
+      </Container>
   );
 }

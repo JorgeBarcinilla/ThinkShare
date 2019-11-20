@@ -7,7 +7,7 @@ import SignUp from './views/signUp';
 import Home from './views/home';
 import CreateThink from './views/createThink';
 import Notification from './views/notification';
-import Acc from './views/ProfilePage/ProfilePage.js';
+import Acc from './views/ProfilePage';
 import AccEdit from './views/accountEdit';
 
 function App() {
