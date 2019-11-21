@@ -33,11 +33,11 @@ function App() {
         <Route path="/" exact component={Index}/>
         <Route path="/signIn" exact component={SignIn}/>
         <Route path="/signUp" exact component={SignUp}/>
-        <Route path="/home" exact component={Home}/>
-        <Route path="/createThink" exact component={CreateThink}/>
-        <Route path="/notification" exact component={Notification}/>
+        <Route path="/home" exact component={authGuard(Home)}/>
+        <Route path="/createThink" exact component={authGuard(CreateThink)}/>
+        <Route path="/notification" exact component={authGuard(Notification)}/>
         <Route path="/profile" exact component={authGuard(Acc)}/>
-        <Route path="/editProfile" exact component={AccEdit}/>
+        <Route path="/editProfile" exact component={authGuard(AccEdit)}/>
       </Router>
     </Provider>
   );

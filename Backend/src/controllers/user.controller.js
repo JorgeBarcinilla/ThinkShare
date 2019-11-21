@@ -19,8 +19,10 @@ userCtrl.getUsers = async (req, res) => {
 }
 
 userCtrl.profile = async (req, res) => {
-    console.log('Estoy en el perfil');
-    res.json({name:'profile'});
+    
+    //const user = await User.findById(req.user.id);
+    //console.log(user);
+    res.json(req.user);
 }
 
 userCtrl.signIn = async (req, res) => {

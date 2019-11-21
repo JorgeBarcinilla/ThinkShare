@@ -60,7 +60,7 @@ export const getProfile = () => {
             console.log(res);
             dispatch({
                 type: PROFILE_GET_DATA,
-                payload: res.data.name
+                payload: res.data
             });
 
         } catch (err) {
@@ -69,6 +69,7 @@ export const getProfile = () => {
         
     }
 }
+
 
 export const signOut = () => {
     return dispatch => {

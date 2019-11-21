@@ -12,8 +12,8 @@ postCtrl.getPost = async (req, res) => {
 }
 
 postCtrl.createPost = async (req, res) => {
-    const {phrase, backgroundColor} = req.body;
-    const post = new Post({phrase, backgroundColor, 'user' : req.params.idUser});
+    const {phrase} = req.body;
+    const post = new Post({phrase, 'user' : req.params.idUser});
     await post.save();
     res.json({status: 'Post guardado'});
 }

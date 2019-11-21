@@ -8,14 +8,16 @@ class Profile extends Component {
 
     async componentDidMount(){
         this.props.getProfile();
+        
     }
 
     render(){
+        
         return(
             <React.Fragment>
                 <AppBar/>
                 <Page
-                    test={this.props.data}
+                    data = {this.props.data}
                 />
             </React.Fragment>
         );

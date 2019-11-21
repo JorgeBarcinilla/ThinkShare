@@ -163,7 +163,7 @@ export default function PrimarySearchAppBar({handleClick}) {
       <Link to='/home' className={classes.link}>
         <MenuItem>
           <IconButton aria-label="show 7 new notifications" color="inherit">
-            <Badge badgeContent={1} color="secondary">
+            <Badge badgeContent={0} color="secondary">
                 <Visibility />
             </Badge>
           </IconButton>
@@ -172,8 +172,8 @@ export default function PrimarySearchAppBar({handleClick}) {
       </Link>
       <Link to='/notification' className={classes.link}>
         <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
+          <IconButton aria-label="show 0 new notifications" color="inherit">
+            <Badge badgeContent={0} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
@@ -227,14 +227,14 @@ export default function PrimarySearchAppBar({handleClick}) {
           </Link>
           <Link to='/home' className={classes.link}>
             <IconButton aria-label="show 7 new notifications" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                   <Visibility />
               </Badge>
             </IconButton>
           </Link>
           <Link to='/notification' className={classes.link}>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
